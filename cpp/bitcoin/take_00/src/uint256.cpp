@@ -25,11 +25,11 @@ void base_blob<BITS>::SetHex(const char* psz)
 
     while (pbegin <= psz && i < WIDTH) {
         nimble = (uint8_t)HexDigit(*pbegin++);
-        data[i] = (nimble << 4);
+        data[i] = (nimble << 4); // MSB nimble
 
         if (pbegin <= psz) {
             nimble = (uint8_t)HexDigit(*pbegin++);
-            data[i] |= nimble;
+            data[i] |= nimble; // LSB nimble
             i++;
         }
     }
